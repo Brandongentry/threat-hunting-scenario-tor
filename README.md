@@ -38,10 +38,9 @@ DeviceFileEvents
 | where DeviceName == "threat-hunt-lab"
 | where InitiatingProcessAccountName == "labuser"
 | where FileName contains "tor"
-| where Timestamp <=  datetime(2025-06-06T02:14:35.2336325Z)
+| where Timestamp <=  datetime(2025-06-07T02:14:35.2336325Z)
 | order by Timestamp desc
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
-
 ```
 <img width="1212" alt="image" src="https://github.com/user-attachments/assets/71402e84-8767-44f8-908c-1805be31122d">
 
@@ -59,9 +58,8 @@ DeviceProcessEvents
 | where DeviceName == "threat-hunt-lab"
 | where AccountName == "labuser"
 | where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-14.5.3.exe"
-| where Timestamp >=   datetime(2025-06-06T02:14:35.2336325Z)
-| where ProcessRemoteSessionDeviceName contains "Bran"
-| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine, ProcessRemoteSessionDeviceName
+| where Timestamp <= datetime(2025-06-07T02:14:35.2336325Z)
+| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
 
 ```
 <img width="1212" alt="image" src="https://github.com/user-attachments/assets/b07ac4b4-9cb3-4834-8fac-9f5f29709d78">
@@ -79,8 +77,8 @@ DeviceProcessEvents
 | where DeviceName == "threat-hunt-lab"
 | where FileName has_any ("tor.exe", "firefox.exe", "tor-brower.exe")
 | where AccountName == "labuser"
-| where ProcessRemoteSessionDeviceName contains "Bran"
-| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine, ProcessRemoteSessionDeviceName
+| where Timestamp <=   datetime(2025-06-07T02:14:35.2336325Z)
+| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
 | order by Timestamp desc
 ```
 <img width="1212" alt="image" src="https://github.com/user-attachments/assets/b13707ae-8c2d-4081-a381-2b521d3a0d8f">
@@ -99,9 +97,9 @@ DeviceNetworkEvents
 | where InitiatingProcessAccountName != "system"
 | where InitiatingProcessFileName in ("tor.exe", "firefox.exe")
 | where InitiatingProcessAccountName == "labuser"
-| where InitiatingProcessRemoteSessionDeviceName contains "bran"
+| where Timestamp <=   datetime(2025-06-07T02:14:35.2336325Z)
 | where RemotePort  in ("9001", "9030", "9050", "9051", "9150", "80", "443")
-| project Timestamp, DeviceName, InitiatingProcessAccountName, ActionType, RemoteIP, RemotePort, RemoteUrl, InitiatingProcessFileName, InitiatingProcessFolderPath, InitiatingProcessRemoteSessionDeviceName
+| project Timestamp, DeviceName, InitiatingProcessAccountName, ActionType, RemoteIP, RemotePort, RemoteUrl, InitiatingProcessFileName, InitiatingProcessFolderPath
 | order by Timestamp desc
 
 ```
