@@ -106,7 +106,8 @@ DeviceNetworkEvents
 | order by Timestamp desc
 
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/87a02b5b-7d12-4f53-9255-f5e750d0e3cb">
+![Screenshot 2025-06-10 at 11 39 52 PM](https://github.com/user-attachments/assets/8ade8be9-f32c-4906-83e0-a1f042f8c510)
+
 
 ---
 
