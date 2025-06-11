@@ -38,7 +38,7 @@ DeviceFileEvents
 | where DeviceName == "threat-hunt-lab"
 | where InitiatingProcessAccountName == "labuser"
 | where FileName contains "tor"
-| where Timestamp <=  datetime(2025-06-06T02:14:35.2336325Z)
+| where Timestamp <=  datetime(2025-06-07T02:14:35.2336325Z)
 | order by Timestamp desc
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
 ```
