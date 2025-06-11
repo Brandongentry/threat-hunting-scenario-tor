@@ -60,11 +60,12 @@ DeviceProcessEvents
 | where DeviceName == "threat-hunt-lab"
 | where AccountName == "labuser"
 | where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-14.5.3.exe"
-| where Timestamp <= datetime(2025-06-07T02:14:35.2336325Z)
+| where Timestamp == datetime(2025-06-06T02:50:16.3085776Z)
 | project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
 
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/b07ac4b4-9cb3-4834-8fac-9f5f29709d78">
+![Screenshot 2025-06-10 at 11 06 47 PM](https://github.com/user-attachments/assets/295f00cb-fdef-4a5e-8e14-1f9836a2b228)
+
 
 ---
 
